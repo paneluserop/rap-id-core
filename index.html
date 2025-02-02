@@ -10,6 +10,42 @@
     <script src="static/js/index.js"></script>
     <link rel="icon" type="image/x-icon" href="static/icons/favicon.gif">
     <title>RAPIDFIRE</title>
+    <style>
+        /* Additional custom styles for improved appearance */
+
+        /* Embed container with white transparent background */
+        .embed-container {
+            background: rgba(255, 255, 255, 0.8); /* White with transparency */
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* View counter style */
+        .view-counter {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        /* Ensure video clarity */
+        #background-video {
+            object-fit: cover;
+            filter: brightness(1.1); /* Increase brightness for clarity */
+        }
+
+        /* Slight transparency effect on background video */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
     <div class="loading-page">
@@ -28,12 +64,12 @@
                 </div>
             </div>
             <hr>
-            <div class="container" type="video-player">
+            <div class="container embed-container">
                 <div class="video-title-main">
                     <a>RapidFire: </a>
                     <div class="video-title">
                         <div class="video-name">
-                            <a>AntiBan Panels </a>
+                            <a>AntiBan Panels</a>
                         </div>
                     </div>
                 </div>
@@ -48,17 +84,19 @@
                     </div>
                     <input type="range" min="0" max="100" value="10" class="slider" id="volume">
                 </div>
+                <div class="view-counter">
+                    Views: <span id="view-count">2.3K</span>
+                </div>
             </div>
             <div class="container" type="badges">
                 <a class="btn-badge" href="https://discord.com/users/1119979840423079957" target="_blank">
                     <img src="static/icons/R3.ico" alt="">
-                    <div>Cracked</div>
+                    <div>Dm ME</div>
                 </a>
                 <a class="btn-badge" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
                     <img src="static/icons/images.ico" alt="">
-                    <div>Github</div>
+                    <div>Youtube</div>
                 </a>
-                <!-- Telegram linki kaldırıldı -->
                 <a class="btn-badge" href="https://discord.com/invite/rapidfirecorp" target="_blank">
                     <img src="static/icons/discord.ico" alt="">
                     <div>Discord</div>
@@ -69,5 +107,15 @@
     <div class="background opacity-0">
         <video id="background-video" src="static/bg.mp4" loop></video>
     </div>
+
+    <script>
+        // Increment view count every time the page loads, or implement other logic to simulate views
+        let views = 2300; // Initial views (2.3K)
+        function updateViewCount() {
+            document.getElementById('view-count').textContent = (views / 1000).toFixed(1) + "K";
+            views += 10; // Simulating increment every load or after some time
+        }
+        setInterval(updateViewCount, 2000); // Update the view counter every 2 seconds for example
+    </script>
 </body>
 </html>
