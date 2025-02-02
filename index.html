@@ -55,8 +55,8 @@
             transition: filter 0.5s ease;
         }
 
-        /* View counter embedded with white transparent background */
-        #view-counter-wrapper {
+        /* Combined Embed View Counter and RAPIDFIRE CORP Text */
+        #embed-wrapper {
             position: fixed;
             bottom: 30px;
             left: 50%;
@@ -86,17 +86,17 @@
             }
         }
 
-        #view-counter-wrapper:hover {
+        #embed-wrapper:hover {
             transform: translateX(-50%) scale(1.05); /* Slightly enlarge on hover */
             background-color: rgba(255, 255, 255, 1); /* Full opacity on hover */
             box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
         }
 
-        #view-counter-wrapper h2 {
+        #embed-wrapper h2 {
             margin: 0;
         }
 
-        #view-counter-wrapper span {
+        #embed-wrapper span {
             color: #00bcd4; /* Cyan color for the count */
         }
 
@@ -178,9 +178,10 @@
         <video id="background-video" class="background-video" src="static/bg.mp4" loop></video>
     </div>
 
-    <!-- View Counter Embed -->
-    <div id="view-counter-wrapper">
-        <h2>RAPIDFIRE CORP - Current Views: <span id="count">1003</span></h2>
+    <!-- Combined Embed: RAPIDFIRE CORP + View Counter -->
+    <div id="embed-wrapper">
+        <h2>RAPIDFIRE CORP</h2>
+        <p>Current Views: <span id="count">1003</span></p>
     </div>
 
     <script>
@@ -202,7 +203,7 @@
 
         // Show counter when "Enter" button is clicked
         $('#enter').click(function () {
-            $('#view-counter-wrapper').fadeIn(500); // Fade in the counter
+            $('#embed-wrapper').fadeIn(500); // Fade in the combined embed
             const currentViewCount = localStorage.getItem('viewCount');
             document.getElementById('count').innerText = currentViewCount;
             $('.loading-page').fadeOut(500); // Hide the loading page
