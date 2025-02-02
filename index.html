@@ -55,35 +55,28 @@
             transition: filter 0.5s ease;
         }
 
-        /* Refined view counter design */
-        #view-count {
+        /* View counter embedded with white transparent background */
+        #view-counter-wrapper {
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 24px;
-            color: #ffffff; /* White color for a clean look */
-            background-color: rgba(0, 0, 0, 0.4); /* Darker, subtler background */
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.6); /* Cyan shadow for visibility */
+            background-color: rgba(255, 255, 255, 0.8); /* White transparent background */
+            padding: 20px 30px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
+            font-size: 24px;
+            color: #333;
             font-weight: bold;
-            opacity: 1;
             z-index: 100;
-            transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out forwards;
         }
 
-        /* Hover effect for view counter */
-        #view-count:hover {
-            background-color: rgba(0, 0, 0, 0.7); /* Darker background on hover */
-            transform: scale(1.05); /* Slightly enlarge on hover */
-        }
-
-        /* Smooth entrance animation for view counter */
-        @keyframes slideInUp {
+        @keyframes fadeInUp {
             from {
-                transform: translateY(100px);
+                transform: translateY(50px);
                 opacity: 0;
             }
             to {
@@ -92,23 +85,18 @@
             }
         }
 
-        /* Social Media Button Styling */
-        .social-btn {
-            background-color: #1d1d1d;
-            border-radius: 50%;
-            padding: 10px;
-            margin: 5px;
-            color: white;
-            transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+        #view-counter-wrapper:hover {
+            transform: translateX(-50%) scale(1.05); /* Slightly enlarge on hover */
+            background-color: rgba(255, 255, 255, 1); /* Full opacity on hover */
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
         }
 
-        .social-btn:hover {
-            transform: scale(1.2);
-            background-color: #00ffcc;
+        #view-counter-wrapper h2 {
+            margin: 0;
         }
 
-        .social-btn i {
-            font-size: 20px;
+        #view-counter-wrapper span {
+            color: #00bcd4; /* Cyan color for the count */
         }
     </style>
 </head>
@@ -165,14 +153,16 @@
                     <div>Discord</div>
                 </a>
             </div>
-            <div id="view-count">
-                <h2>Current Views: <span id="count">1003</span></h2>
-            </div>
         </div>
     </div>
 
     <div class="background opacity-0">
         <video id="background-video" class="background-video" src="static/bg.mp4" loop></video>
+    </div>
+
+    <!-- View Counter Embed -->
+    <div id="view-counter-wrapper">
+        <h2>Current Views: <span id="count">1003</span></h2>
     </div>
 
     <script>
