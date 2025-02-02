@@ -46,8 +46,8 @@
             transition: filter 0.5s ease;
         }
 
-        /* Single Unified Embed */
-        #embed-wrapper {
+        /* Main Embed */
+        #main-embed {
             position: fixed;
             bottom: 30px;
             left: 50%;
@@ -77,25 +77,25 @@
             }
         }
 
-        #embed-wrapper:hover {
+        #main-embed:hover {
             transform: translateX(-50%) scale(1.05); /* Slightly enlarge on hover */
             background-color: rgba(0, 0, 0, 1); /* Full opacity on hover */
             box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8); /* Stronger shadow on hover */
         }
 
-        #embed-wrapper h2 {
+        #main-embed h2 {
             margin: 0;
             font-size: 24px;
             color: #00bcd4; /* Cyan color for the title */
         }
 
-        #embed-wrapper .view-count {
+        #main-embed .view-count {
             color: #00ffcc; /* Cyan color for the count */
             font-size: 22px;
             margin-top: 10px;
         }
 
-        #embed-wrapper .btn-badge {
+        #main-embed .btn-badge {
             display: inline-block;
             margin: 10px;
             padding: 10px 20px;
@@ -106,7 +106,7 @@
             font-weight: bold;
         }
 
-        #embed-wrapper .btn-badge:hover {
+        #main-embed .btn-badge:hover {
             background-color: #2980b9;
         }
     </style>
@@ -150,20 +150,6 @@
                     <input type="range" min="0" max="100" value="10" class="slider" id="volume">
                 </div>
             </div>
-            <div class="container" type="badges">
-                <a class="btn-badge" href="https://discord.com/users/1119979840423079957" target="_blank">
-                    <img src="static/icons/R3.ico" alt="">
-                    <div>Rapid</div>
-                </a>
-                <a class="btn-badge" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
-                    <img src="static/icons/images.ico" alt="">
-                    <div>Youtube</div>
-                </a>
-                <a class="btn-badge" href="https://discord.com/invite/rapidfirecorp" target="_blank">
-                    <img src="static/icons/discord.ico" alt="">
-                    <div>Discord</div>
-                </a>
-            </div>
         </div>
     </div>
 
@@ -171,10 +157,9 @@
         <video id="background-video" class="background-video" src="static/bg.mp4" loop></video>
     </div>
 
-    <!-- Unified Embed with all Content -->
-    <div id="embed-wrapper">
-        <h2>RAPIDFIRE CORP</h2>
-        <div>Dev Antiban Panel | Bypass</div>
+    <!-- Main Embed with Info, View Counter, and Badges -->
+    <div id="main-embed">
+        <h2>Panel User Op: <br>Owner</h2>
         <div class="view-count">Current Views: <span id="count">1003</span></div>
         <div class="btn-badge-container">
             <a class="btn-badge" href="https://discord.com/users/1119979840423079957" target="_blank">
@@ -209,9 +194,9 @@
             localStorage.setItem('viewCount', viewCount + 1); // Increase by 1 on each visit
         }
 
-        // Show the combined embed when the "Enter" button is clicked
+        // Show the main embed when the "Enter" button is clicked
         $('#enter').click(function () {
-            $('#embed-wrapper').fadeIn(500); // Show the unified embed
+            $('#main-embed').fadeIn(500); // Show the main embed
             const currentViewCount = localStorage.getItem('viewCount');
             document.getElementById('count').innerText = currentViewCount;
             $('.loading-page').fadeOut(500); // Hide the loading page
