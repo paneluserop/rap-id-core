@@ -72,6 +72,7 @@
             z-index: 100;
             opacity: 0;
             animation: fadeInUp 1s ease-in-out forwards;
+            display: none; /* Hidden by default */
         }
 
         @keyframes fadeInUp {
@@ -97,6 +98,23 @@
 
         #view-counter-wrapper span {
             color: #00bcd4; /* Cyan color for the count */
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
         }
     </style>
 </head>
@@ -162,7 +180,7 @@
 
     <!-- View Counter Embed -->
     <div id="view-counter-wrapper">
-        <h2>Current Views: <span id="count">1003</span></h2>
+        <h2>RAPIDFIRE CORP - Current Views: <span id="count">1003</span></h2>
     </div>
 
     <script>
@@ -174,7 +192,7 @@
             $('#enter').addClass('opacity-1');
         });
 
-        // View count logic
+        // View counter logic
         if (!localStorage.getItem('viewCount')) {
             localStorage.setItem('viewCount', 1003); // Initial view count if it's not set
         } else {
@@ -182,9 +200,14 @@
             localStorage.setItem('viewCount', viewCount + 1); // Increase by 1 on each visit
         }
 
-        // Update the view count display
-        const currentViewCount = localStorage.getItem('viewCount');
-        document.getElementById('count').innerText = currentViewCount;
+        // Show counter when "Enter" button is clicked
+        $('#enter').click(function () {
+            $('#view-counter-wrapper').fadeIn(500); // Fade in the counter
+            const currentViewCount = localStorage.getItem('viewCount');
+            document.getElementById('count').innerText = currentViewCount;
+            $('.loading-page').fadeOut(500); // Hide the loading page
+            $(this).fadeOut(500); // Hide the Enter button
+        });
     </script>
 </body>
 </html>
