@@ -14,11 +14,10 @@
         /* General body and font settings */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f4f7;
-            color: #333;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         /* Embed container with white transparent background */
@@ -41,6 +40,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
+            z-index: 5;
         }
 
         .container[type="profile-img"] {
@@ -57,17 +57,18 @@
         }
 
         .container[type="info"] h1.name {
-            font-size: 36px;
+            font-size: 48px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
             margin: 0;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for visibility */
         }
 
         .container[type="info"] h3.info {
             font-size: 22px;
             font-weight: 400;
-            color: #777;
+            color: #fff;
             margin-top: 8px;
         }
 
@@ -94,10 +95,11 @@
         .view-counter {
             font-size: 24px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
             margin-top: 20px;
             letter-spacing: 1px;
             text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
         }
 
         .view-counter span {
@@ -115,7 +117,7 @@
         .play-icon i, .volume-icon i {
             font-size: 20px;
             margin-right: 12px;
-            color: #333;
+            color: #fff;
             transition: color 0.3s ease;
         }
 
@@ -133,7 +135,7 @@
             width: 130px;
         }
 
-        /* Background video styling */
+        /* Full-screen Background video */
         #background-video {
             object-fit: cover;
             filter: brightness(1.2); /* Brightness for clarity */
