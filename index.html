@@ -22,15 +22,6 @@
             transition: opacity 2s ease-in-out;
         }
 
-        .fade-in {
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
         /* Loading animation */
         .loader {
             width: 50px;
@@ -55,19 +46,19 @@
             transition: filter 0.5s ease;
         }
 
-        /* Combined Embed View Counter and RAPIDFIRE CORP Text */
+        /* Combined Embed: RAPIDFIRE CORP + View Counter */
         #embed-wrapper {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.8); /* White transparent background */
+            background-color: rgba(0, 0, 0, 0.8); /* Black transparent background */
             padding: 20px 30px;
             border-radius: 25px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
             text-align: center;
-            font-size: 24px;
-            color: #333;
+            font-size: 20px;
+            color: white;
             font-weight: bold;
             z-index: 100;
             opacity: 0;
@@ -88,32 +79,34 @@
 
         #embed-wrapper:hover {
             transform: translateX(-50%) scale(1.05); /* Slightly enlarge on hover */
-            background-color: rgba(255, 255, 255, 1); /* Full opacity on hover */
-            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+            background-color: rgba(0, 0, 0, 1); /* Full opacity on hover */
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.8); /* Stronger shadow on hover */
         }
 
         #embed-wrapper h2 {
             margin: 0;
+            font-size: 24px;
+            color: #00bcd4; /* Cyan color for the title */
         }
 
-        #embed-wrapper span {
-            color: #00bcd4; /* Cyan color for the count */
+        #embed-wrapper .view-count {
+            color: #00ffcc; /* Cyan color for the count */
+            font-size: 22px;
+            margin-top: 10px;
         }
 
-        /* Button Styles */
-        .btn {
+        #embed-wrapper .btn-badge {
             display: inline-block;
+            margin: 10px;
             padding: 10px 20px;
             background-color: #3498db;
             color: white;
-            font-size: 16px;
-            border: none;
             border-radius: 10px;
-            cursor: pointer;
-            margin-top: 20px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        .btn:hover {
+        #embed-wrapper .btn-badge:hover {
             background-color: #2980b9;
         }
     </style>
@@ -181,7 +174,22 @@
     <!-- Combined Embed: RAPIDFIRE CORP + View Counter -->
     <div id="embed-wrapper">
         <h2>RAPIDFIRE CORP</h2>
-        <p>Current Views: <span id="count">1003</span></p>
+        <div>Dev Antiban Panel | Bypass</div>
+        <div class="view-count">Current Views: <span id="count">1003</span></div>
+        <div class="btn-badge-container">
+            <a class="btn-badge" href="https://discord.com/users/1119979840423079957" target="_blank">
+                <img src="static/icons/R3.ico" alt="">
+                <div>Rapid</div>
+            </a>
+            <a class="btn-badge" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
+                <img src="static/icons/images.ico" alt="">
+                <div>Youtube</div>
+            </a>
+            <a class="btn-badge" href="https://discord.com/invite/rapidfirecorp" target="_blank">
+                <img src="static/icons/discord.ico" alt="">
+                <div>Discord</div>
+            </a>
+        </div>
     </div>
 
     <script>
@@ -201,9 +209,9 @@
             localStorage.setItem('viewCount', viewCount + 1); // Increase by 1 on each visit
         }
 
-        // Show counter when "Enter" button is clicked
+        // Show the combined embed when the "Enter" button is clicked
         $('#enter').click(function () {
-            $('#embed-wrapper').fadeIn(500); // Fade in the combined embed
+            $('#embed-wrapper').fadeIn(500); // Show the combined embed
             const currentViewCount = localStorage.getItem('viewCount');
             document.getElementById('count').innerText = currentViewCount;
             $('.loading-page').fadeOut(500); // Hide the loading page
