@@ -55,46 +55,60 @@
             transition: filter 0.5s ease;
         }
 
-        /* View counter at the bottom with improved styling */
+        /* Refined view counter design */
         #view-count {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             font-size: 24px;
-            color: #00ffcc; /* A nice cyan color */
-            background-color: rgba(0, 0, 0, 0.3); /* More subtle transparency */
+            color: #ffffff; /* White color for a clean look */
+            background-color: rgba(0, 0, 0, 0.4); /* Darker, subtler background */
             padding: 15px 25px;
             border-radius: 15px;
-            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.6); /* Cyan shadow for better visibility */
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.6); /* Cyan shadow for visibility */
             text-align: center;
             font-weight: bold;
-            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
             opacity: 1;
             z-index: 100;
+            transition: background-color 0.3s ease, transform 0.3s ease-in-out;
         }
 
-        /* Hover animation effect */
+        /* Hover effect for view counter */
         #view-count:hover {
-            background-color: rgba(0, 0, 0, 0.6); /* Darker background on hover */
-            transform: translateX(-50%) scale(1.1); /* Slightly grow the counter when hovered */
+            background-color: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
         }
 
-        /* Rotation effect on click */
-        #view-count.clicked {
-            animation: rotateCounter 1s ease-out forwards;
+        /* Smooth entrance animation for view counter */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        @keyframes rotateCounter {
-            0% {
-                transform: rotate(0deg);
-            }
-            50% {
-                transform: rotate(180deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+        /* Social Media Button Styling */
+        .social-btn {
+            background-color: #1d1d1d;
+            border-radius: 50%;
+            padding: 10px;
+            margin: 5px;
+            color: white;
+            transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.2);
+            background-color: #00ffcc;
+        }
+
+        .social-btn i {
+            font-size: 20px;
         }
     </style>
 </head>
@@ -181,12 +195,6 @@
         // Update the view count display
         const currentViewCount = localStorage.getItem('viewCount');
         document.getElementById('count').innerText = currentViewCount;
-
-        // Rotation effect when the view counter is clicked or touched
-        $('#view-count').on('click', function () {
-            $(this).addClass('clicked'); // Trigger the rotation animation
-            setTimeout(() => $(this).removeClass('clicked'), 1000); // Remove the class after 1 second to reset the animation
-        });
     </script>
 </body>
 </html>
