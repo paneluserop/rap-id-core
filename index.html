@@ -10,12 +10,56 @@
     <script src="static/js/index.js"></script>
     <link rel="icon" type="image/x-icon" href="static/icons/favicon.gif">
     <title>RAPIDFIRE</title>
+    <style>
+        /* Basic CSS Animations */
+        .opacity-0 {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .opacity-1 {
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Loading animation */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+            margin: auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .background-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <div class="loading-page">
         <div class="loader"></div>
         <button class="btn opacity-0" id="enter">Enter</button>
     </div>
+
     <div class="info opacity-0">
         <div class="container" type="background">
             <div class="container" type="dev-info">
@@ -24,7 +68,7 @@
                 </div>
                 <div class="container" type="info">
                     <h1 class="name">Rapid-Fire Corporation</h1>
-                    <h3 class="info">Dev Antiban Panel|Bypas</h3>
+                    <h3 class="info">Dev Antiban Panel | Bypass</h3>
                 </div>
             </div>
             <hr>
@@ -58,16 +102,41 @@
                     <img src="static/icons/images.ico" alt="">
                     <div>Youtube</div>
                 </a>
-                <!-- Telegram linki kaldırıldı -->
                 <a class="btn-badge" href="https://discord.com/invite/rapidfirecorp" target="_blank">
                     <img src="static/icons/discord.ico" alt="">
                     <div>Discord</div>
                 </a>
             </div>
+            <div id="view-count">
+                <h2>Current Views: <span id="count">1003</span></h2>
+            </div>
         </div>
     </div>
+
     <div class="background opacity-0">
         <video id="background-video" src="static/bg.mp4" loop></video>
     </div>
+
+    <script>
+        // Animate the page elements
+        $(document).ready(function () {
+            $('.loading-page').addClass('opacity-1');
+            $('.info').addClass('opacity-1');
+            $('.background').addClass('opacity-1');
+            $('#enter').addClass('opacity-1');
+        });
+
+        // View count logic
+        if (!localStorage.getItem('viewCount')) {
+            localStorage.setItem('viewCount', 1003); // Initial view count if it's not set
+        } else {
+            let viewCount = parseInt(localStorage.getItem('viewCount'));
+            localStorage.setItem('viewCount', viewCount + 1); // Increase by 1 on each visit
+        }
+
+        // Update the view count display
+        const currentViewCount = localStorage.getItem('viewCount');
+        document.getElementById('count').innerText = currentViewCount;
+    </script>
 </body>
 </html>
