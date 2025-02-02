@@ -46,7 +46,7 @@
             transition: filter 0.5s ease;
         }
 
-        /* Combined Embed: RAPIDFIRE CORP + View Counter */
+        /* Single Unified Embed */
         #embed-wrapper {
             position: fixed;
             bottom: 30px;
@@ -171,7 +171,7 @@
         <video id="background-video" class="background-video" src="static/bg.mp4" loop></video>
     </div>
 
-    <!-- Combined Embed: RAPIDFIRE CORP + View Counter -->
+    <!-- Unified Embed with all Content -->
     <div id="embed-wrapper">
         <h2>RAPIDFIRE CORP</h2>
         <div>Dev Antiban Panel | Bypass</div>
@@ -211,7 +211,7 @@
 
         // Show the combined embed when the "Enter" button is clicked
         $('#enter').click(function () {
-            $('#embed-wrapper').fadeIn(500); // Show the combined embed
+            $('#embed-wrapper').fadeIn(500); // Show the unified embed
             const currentViewCount = localStorage.getItem('viewCount');
             document.getElementById('count').innerText = currentViewCount;
             $('.loading-page').fadeOut(500); // Hide the loading page
