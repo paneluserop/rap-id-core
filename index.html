@@ -18,7 +18,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #0a0a0a;
+            background-color: #1b1b1b;
             color: #fff;
             overflow: hidden;
         }
@@ -32,7 +32,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            filter: brightness(0.8);
+            filter: brightness(0.7);
         }
 
         /* Main content container */
@@ -57,35 +57,39 @@
 
         .developer-info img {
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             margin-right: 20px;
-            box-shadow: 0 6px 15px rgba(0, 255, 255, 0.4);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.6);
+            animation: glow 1.5s infinite alternate;
         }
 
         .developer-info h1,
         .developer-info h3 {
             margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.7);
         }
 
         .developer-info .name {
-            font-size: 36px;
+            font-size: 40px;
             font-weight: bold;
             color: #00bcd4;
+            text-transform: uppercase;
         }
 
         .developer-info .role {
-            font-size: 18px;
+            font-size: 22px;
             color: #00bcd4;
-            margin-top: 5px;
+            margin-top: 10px;
         }
 
         /* View counter styling */
         .view-counter {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
             margin-top: 20px;
             animation: fadeIn 1s ease-in-out;
+            text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.6);
         }
 
         .view-counter span {
@@ -104,6 +108,7 @@
             text-decoration: none;
             margin: 20px 10px;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
         }
 
         .btn:hover {
@@ -197,6 +202,16 @@
             }
         }
 
+        /* Keyframe for glowing effect */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 15px #00bcd4;
+            }
+
+            100% {
+                box-shadow: 0 0 15px #00bcd4, 0 0 25px #00bcd4, 0 0 40px #00bcd4;
+            }
+        }
     </style>
 </head>
 
@@ -217,7 +232,7 @@
 
         <!-- View counter -->
         <div class="view-counter">
-            Views: <span id="view-count">1.3K</span>
+            Views: <span id="view-count">2.2K</span>
         </div>
 
         <!-- Embed container with controls -->
@@ -252,8 +267,8 @@
     </div>
 
     <script>
-        // Initialize view count from localStorage or start at 1300
-        let views = localStorage.getItem('views') ? parseInt(localStorage.getItem('views')) : 1300;
+        // Initialize view count from localStorage or start at 2236
+        let views = localStorage.getItem('views') ? parseInt(localStorage.getItem('views')) : 2236;
 
         // Update view counter function
         function updateViewCount() {
