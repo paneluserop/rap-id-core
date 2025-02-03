@@ -18,12 +18,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #1b1b1b;
+            background-color: #0a0a0a;
             color: #fff;
             overflow: hidden;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease;
         }
 
-        /* Full-screen background video */
+        /* Full-screen background video with parallax effect */
         #background-video {
             object-fit: cover;
             position: fixed;
@@ -32,7 +34,9 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            filter: brightness(0.7);
+            filter: brightness(0.8);
+            transform: translateZ(0) scale(1.1);
+            background-attachment: fixed;
         }
 
         /* Main content container */
@@ -57,39 +61,42 @@
 
         .developer-info img {
             border-radius: 50%;
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             margin-right: 20px;
-            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.6);
-            animation: glow 1.5s infinite alternate;
+            box-shadow: 0 6px 15px rgba(0, 255, 255, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .developer-info img:hover {
+            transform: scale(1.1);
         }
 
         .developer-info h1,
         .developer-info h3 {
             margin: 0;
-            text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.7);
         }
 
         .developer-info .name {
-            font-size: 40px;
+            font-size: 36px;
             font-weight: bold;
             color: #00bcd4;
-            text-transform: uppercase;
+            animation: fadeInText 1s forwards;
         }
 
         .developer-info .role {
-            font-size: 22px;
+            font-size: 18px;
             color: #00bcd4;
-            margin-top: 10px;
+            margin-top: 5px;
+            animation: fadeInText 1s forwards;
         }
 
         /* View counter styling */
         .view-counter {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
             margin-top: 20px;
             animation: fadeIn 1s ease-in-out;
-            text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.6);
         }
 
         .view-counter span {
@@ -107,13 +114,13 @@
             font-weight: bold;
             text-decoration: none;
             margin: 20px 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .btn:hover {
             background-color: #008c8c;
-            transform: scale(1.05);
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.4);
         }
 
         .btn i {
@@ -177,6 +184,14 @@
             .content {
                 padding: 20px;
             }
+
+            .developer-info h1 {
+                font-size: 28px;
+            }
+
+            .view-counter {
+                font-size: 20px;
+            }
         }
 
         /* Keyframe for fade-in animation */
@@ -202,14 +217,13 @@
             }
         }
 
-        /* Keyframe for glowing effect */
-        @keyframes glow {
+        @keyframes fadeInText {
             0% {
-                box-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 15px #00bcd4;
+                opacity: 0;
             }
 
             100% {
-                box-shadow: 0 0 15px #00bcd4, 0 0 25px #00bcd4, 0 0 40px #00bcd4;
+                opacity: 1;
             }
         }
     </style>
@@ -264,6 +278,9 @@
                 <i class="fab fa-discord"></i> Discord
             </a>
         </div>
+
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="btn">Switch Theme</button>
     </div>
 
     <script>
@@ -320,6 +337,12 @@
         const volumeSlider = document.getElementById('volume-slider');
         volumeSlider.addEventListener('input', function () {
             video.volume = volumeSlider.value / 100;
+        });
+
+        // Theme toggle functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
         });
     </script>
 </body>
