@@ -231,7 +231,7 @@
 
 <body>
     <!-- Full-screen background video -->
-    <video id="background-video" src="static/bg.mp4" loop muted autoplay></video>
+    <video id="background-video" src="static/bg.mp4" loop autoplay></video>
 
     <!-- Main content -->
     <div class="content">
@@ -337,6 +337,12 @@
         const volumeSlider = document.getElementById('volume-slider');
         volumeSlider.addEventListener('input', function () {
             video.volume = volumeSlider.value / 100;
+        });
+
+        // Unmute and set volume to 100% when the page loads
+        window.addEventListener('load', () => {
+            video.muted = false;
+            video.volume = 1; // Set volume to 100% by default
         });
 
         // Theme toggle functionality
