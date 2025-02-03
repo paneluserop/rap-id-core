@@ -18,7 +18,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #0d0d0d;
+            background-color: #121212;
             color: #fff;
             overflow: hidden;
             scroll-behavior: smooth;
@@ -34,7 +34,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            filter: brightness(0.7);
+            filter: brightness(0.6);
         }
 
         /* Main content container */
@@ -60,11 +60,11 @@
         .developer-info .name {
             font-size: 36px;
             font-weight: bold;
-            color: #ff4081;
+            color: #00d9ff;
         }
 
         .developer-info .badge {
-            background-color: #ff4081;
+            background-color: #00d9ff;
             color: #fff;
             padding: 6px 12px;
             font-size: 16px;
@@ -75,19 +75,41 @@
             box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
         }
 
+        /* Frosted glass effect container */
+        .embed-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .embed-container h2, .embed-container p {
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(0, 255, 255, 0.4);
+        }
+
+        .embed-container:hover {
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
         /* View counter styling */
         .view-counter {
             font-size: 24px;
             font-weight: bold;
             margin-top: 20px;
-            color: #ff4081;
+            color: #00d9ff;
             animation: fadeIn 1s ease-in-out;
         }
 
         /* Button styles */
         .btn {
             display: inline-block;
-            background-color: #ff4081;
+            background-color: #00d9ff;
             color: #fff;
             padding: 12px 24px;
             border-radius: 50px;
@@ -98,29 +120,13 @@
         }
 
         .btn:hover {
-            background-color: #e40060;
+            background-color: #008bb0;
             transform: scale(1.1);
-            box-shadow: 0 15px 30px rgba(255, 64, 129, 0.4);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.4);
         }
 
         .btn i {
             margin-right: 10px;
-        }
-
-        /* Embed container with transparency and smooth animation */
-        .embed-container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 30px;
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .embed-container:hover {
-            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
-            transform: translateY(-5px);
         }
 
         /* Video controls styling */
@@ -142,7 +148,7 @@
         }
 
         .video-controls button:hover {
-            color: #ff4081;
+            color: #00d9ff;
         }
 
         .volume-slider {
