@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,255 +12,183 @@
     <link rel="icon" type="image/x-icon" href="static/icons/favicon.gif">
     <title>RAPIDFIRE</title>
     <style>
-        /* General body and font settings */
+        /* Body styling */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             overflow: hidden; /* Prevent scrolling */
+            background-color: #121212;
         }
 
-        /* Embed container with white transparent background */
-        .embed-container {
-            background: rgba(255, 255, 255, 0.9); /* White with slight transparency */
-            padding: 30px;
-            border-radius: 12px;
-            margin: 30px 0;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+        /* Container for background video */
+        #background-video {
+            object-fit: cover;
+            filter: brightness(0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
-        .embed-container:hover {
-            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
+        /* Transparent overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
         }
 
-        /* Header info and profile image */
-        .container[type="dev-info"] {
+        /* Main content container */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Developer info section */
+        .developer-info {
             display: flex;
+            justify-content: center;
             align-items: center;
             margin-bottom: 20px;
-            z-index: 5;
         }
 
-        .container[type="profile-img"] {
-            margin-right: 20px;
-        }
-
-        .avatar {
-            width: 90px;
-            height: 90px;
+        .developer-info img {
             border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .container[type="info"] h1.name {
-            font-size: 48px;
-            font-weight: bold;
-            color: #fff;
+        .developer-info h1,
+        .developer-info h3 {
             margin: 0;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for visibility */
+            font-family: 'Arial', sans-serif;
         }
 
-        .container[type="info"] h3.info {
-            font-size: 22px;
-            font-weight: 400;
-            color: #fff;
-            margin-top: 8px;
-        }
-
-        /* Developer Badge */
-        .dev-badge {
-            display: inline-block;
-            background-color: #ff5722;
-            color: white;
-            padding: 6px 18px;
-            border-radius: 30px;
-            font-size: 14px;
+        .developer-info .name {
+            font-size: 36px;
             font-weight: bold;
-            margin-left: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s ease;
         }
 
-        .dev-badge:hover {
-            background-color: #e64a19;
+        .developer-info .role {
+            font-size: 18px;
+            color: #ff5722;
         }
 
-        /* View Counter Style */
+        /* View counter styling */
         .view-counter {
             font-size: 24px;
             font-weight: bold;
-            color: #fff;
             margin-top: 20px;
-            letter-spacing: 1px;
-            text-align: center;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for better visibility */
         }
 
         .view-counter span {
             color: #ff5722;
         }
 
-        /* Volume Control Styling */
-        .volume-control {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            justify-content: center;
-        }
-
-        .play-icon i, .volume-icon i {
-            font-size: 20px;
-            margin-right: 12px;
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background-color: #ff5722;
             color: #fff;
-            transition: color 0.3s ease;
-        }
-
-        .play-icon i:hover, .volume-icon i:hover {
-            color: #ff5722;
-        }
-
-        .slider {
-            width: 120px;
-            margin-left: 10px;
-            transition: width 0.3s ease;
-        }
-
-        .slider:hover {
-            width: 130px;
-        }
-
-        /* Full-screen Background video */
-        #background-video {
-            object-fit: cover;
-            filter: brightness(1.2); /* Brightness for clarity */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        /* Background overlay */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            filter: blur(5px);
-        }
-
-        /* Hover effects for buttons and badges */
-        .btn-badge {
-            display: inline-flex;
-            align-items: center;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
             text-decoration: none;
-            background-color: #fff;
-            color: #333;
-            padding: 12px 18px;
-            border-radius: 10px;
-            margin-right: 20px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            margin: 20px 10px;
+            transition: background-color 0.3s ease;
         }
 
-        .btn-badge:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        .btn:hover {
+            background-color: #e64a19;
         }
 
-        .btn-badge img {
-            width: 24px;
+        .btn i {
             margin-right: 10px;
         }
 
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .developer-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .developer-info img {
+                margin-bottom: 15px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div class="loading-page">
-        <div class="loader"></div>
-        <button class="btn opacity-0" id="enter">Enter</button>
-    </div>
-    <div class="info opacity-0">
-        <div class="container" type="background">
-            <div class="container" type="dev-info">
-                <div class="container" type="profile-img">
-                    <img src="static/icons/bıçak.gif" class="avatar">
-                </div>
-                <div class="container" type="info">
-                    <h1 class="name">PANEL USER OP</h1>
-                    <h3 class="info">OWNER OF RAPIDFIRE CORP</h3>
-                    <span class="dev-badge">Developer</span> <!-- Developer Badge -->
-                </div>
-            </div>
-            <hr>
-            <div class="container embed-container">
-                <div class="video-title-main">
-                    <a>RapidFire: </a>
-                    <div class="video-title">
-                        <div class="video-name">
-                            <a>AntiBan Panels</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="volume-control">
-                    <div class="play-icon">
-                        <i class="fas fa-play"></i>
-                        <i class="fas fa-pause"></i>
-                    </div>
-                    <div class="volume-icon">
-                        <i class="fas fa-volume-off"></i>
-                        <i class="fas fa-volume-high"></i>
-                    </div>
-                    <input type="range" min="0" max="100" value="10" class="slider" id="volume">
-                </div>
-                <div class="view-counter">
-                    Views: <span id="view-count">2.5K</span>
-                </div>
-            </div>
-            <div class="container" type="badges">
-                <a class="btn-badge" href="https://discord.com/users/1119979840423079957" target="_blank">
-                    <img src="static/icons/R3.ico" alt="">
-                    <div>Dm ME</div>
-                </a>
-                <a class="btn-badge" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
-                    <img src="static/icons/images.ico" alt="">
-                    <div>Youtube</div>
-                </a>
-                <a class="btn-badge" href="https://discord.com/invite/rapidfirecorp" target="_blank">
-                    <img src="static/icons/discord.ico" alt="">
-                    <div>Discord</div>
-                </a>
+    <!-- Background video -->
+    <video id="background-video" src="static/bg.mp4" loop muted></video>
+
+    <!-- Overlay to darken background -->
+    <div class="overlay"></div>
+
+    <!-- Main content -->
+    <div class="content">
+        <!-- Developer info section -->
+        <div class="developer-info">
+            <img src="static/icons/bıçak.gif" alt="Developer Avatar">
+            <div>
+                <h1 class="name">PANEL USER OP</h1>
+                <h3 class="role">OWNER OF RAPIDFIRE CORP</h3>
             </div>
         </div>
-    </div>
-    <div class="background opacity-0">
-        <video id="background-video" src="static/bg.mp4" loop></video>
+
+        <!-- View counter -->
+        <div class="view-counter">
+            Views: <span id="view-count">2.5K</span>
+        </div>
+
+        <!-- Action buttons -->
+        <div>
+            <a class="btn" href="https://discord.com/users/1119979840423079957" target="_blank">
+                <i class="fas fa-comment-dots"></i> DM ME
+            </a>
+            <a class="btn" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a class="btn" href="https://discord.com/invite/rapidfirecorp" target="_blank">
+                <i class="fab fa-discord"></i> Discord
+            </a>
+        </div>
     </div>
 
     <script>
-        // Get the current views count from localStorage
+        // Get the current view count from localStorage
         let views = localStorage.getItem('views') ? parseInt(localStorage.getItem('views')) : 2500;
 
+        // Update view counter function
         function updateViewCount() {
             document.getElementById('view-count').textContent = (views / 1000).toFixed(1) + "K";
-            views += 1; // Increment by 1 on each visit
-            localStorage.setItem('views', views); // Save to localStorage for persistence
+            views += 1; // Increment view count
+            localStorage.setItem('views', views); // Save to localStorage
         }
 
-        setInterval(updateViewCount, 1000); // Update the view count every second
-
-        // Initialize on page load
-        updateViewCount();
+        setInterval(updateViewCount, 1000); // Update every second
+        updateViewCount(); // Initialize view count
     </script>
 </body>
+
 </html>
