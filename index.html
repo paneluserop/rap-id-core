@@ -199,7 +199,7 @@
 
 <body>
     <!-- Full-screen background video -->
-    <video id="background-video" src="static/bg.mp4" loop autoplay></video>
+    <video id="background-video" src="static/bg.mp4" loop autoplay muted></video>
 
     <!-- Main content -->
     <div class="content">
@@ -207,7 +207,7 @@
         <div class="developer-info">
             <div>
                 <h1 class="name">PANEL USER OP</h1>
-                <span class="badge">Developer</span>
+                <span class="badge">OWNER OF RAPIDFIRE CORPORATION</span>
             </div>
         </div>
 
@@ -218,8 +218,8 @@
 
         <!-- Embed container with controls -->
         <div class="embed-container">
-            <h2>Welcome to the RAPIDFIRE Platform</h2>
-            <p>Experience the latest updates and features.</p>
+            <h2>FULLY ANTIBAN PANELS | BYPASS</h2>
+            <p>Explore our exclusive platform for top-tier features and security.</p>
 
             <!-- Video control buttons -->
             <div class="video-controls">
@@ -302,10 +302,13 @@
             video.volume = volumeSlider.value / 100;
         });
 
-        // Unmute and set volume to 100% when the page loads
+        // After video starts playing, unmute the video
         window.addEventListener('load', () => {
-            video.muted = false;
-            video.volume = 1; // Set volume to 100% by default
+            setTimeout(() => {
+                video.muted = false;
+                video.volume = 1; // Set volume to 100% by default
+                video.play(); // Ensure the video plays with sound
+            }, 300); // Adjust this delay as needed
         });
     </script>
 </body>
