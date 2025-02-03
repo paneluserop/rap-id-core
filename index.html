@@ -12,29 +12,225 @@
     <link rel="icon" type="image/x-icon" href="static/icons/favicon.gif">
     <title>RAPIDFIRE</title>
     <style>
-        /* Add your custom styles here */
-        .discord-container {
-            text-align: center;
-            margin-top: 30px;
+        /* Body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #0a0a0a;
+            color: #fff;
+            overflow: hidden;
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease;
         }
 
-        .discord-avatar {
+        /* Light theme styling */
+        .light-theme {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Full-screen background video with parallax effect */
+        #background-video {
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: brightness(0.8);
+            transform: translateZ(0) scale(1.1);
+            background-attachment: fixed;
+        }
+
+        /* Main content container */
+        .content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Developer info section */
+        .developer-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .developer-info img {
+            border-radius: 50%;
             width: 100px;
             height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            margin-right: 20px;
+            box-shadow: 0 6px 15px rgba(0, 255, 255, 0.4);
+            transition: transform 0.3s ease;
         }
 
-        .discord-status {
+        .developer-info img:hover {
+            transform: scale(1.1);
+        }
+
+        .developer-info h1,
+        .developer-info h3 {
+            margin: 0;
+        }
+
+        .developer-info .name {
+            font-size: 36px;
+            font-weight: bold;
+            color: #00bcd4;
+            animation: fadeInText 1s forwards;
+        }
+
+        .developer-info .role {
             font-size: 18px;
-            color: #7289DA;
+            color: #00bcd4;
+            margin-top: 5px;
+            animation: fadeInText 1s forwards;
         }
 
-        .discord-badges img {
-            width: 30px;
-            height: 30px;
-            margin: 5px;
+        /* View counter styling */
+        .view-counter {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .view-counter span {
+            color: #00bcd4;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background-color: #00bcd4;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 20px 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #008c8c;
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.4);
+        }
+
+        .btn i {
+            margin-right: 10px;
+        }
+
+        /* Embed container with transparency and smooth animation */
+        .embed-container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .embed-container:hover {
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* Video controls styling */
+        .video-controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-controls button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .video-controls button:hover {
+            color: #00bcd4;
+        }
+
+        .volume-slider {
+            width: 100px;
+            margin: 0 10px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            .developer-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .developer-info img {
+                margin-bottom: 15px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .developer-info h1 {
+                font-size: 28px;
+            }
+
+            .view-counter {
+                font-size: 20px;
+            }
+        }
+
+        /* Keyframe for fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -54,24 +250,26 @@
             </div>
         </div>
 
-        <!-- Discord User Info -->
-        <div class="discord-container">
-            <img src="https://cdn.discordapp.com/avatars/1119979840423079957/a_d1e621c2a9436b9495f6a57d39915b2e.gif" class="discord-avatar" alt="Discord Avatar">
-            <div class="discord-status">Status: <span id="discord-status">Streaming RAPIDFIRE</span></div>
-
-            <!-- Discord Badges (Nitro, Server Booster, etc.) -->
-            <div class="discord-badges">
-                <!-- Nitro Badge (If you have Discord Nitro, add this badge) -->
-                <img src="https://cdn.discordapp.com/attachments/1076942074618663946/1077056333384896592/discord-nitro-badge.png" alt="Discord Nitro Badge" title="Discord Nitro">
-
-                <!-- Server Booster Badge (If you boosted a server, add this badge) -->
-                <img src="https://cdn.discordapp.com/attachments/1076942074618663946/1077056333404230696/discord-booster-badge.png" alt="Server Booster Badge" title="Server Booster">
-            </div>
-        </div>
-
         <!-- View counter -->
         <div class="view-counter">
             Views: <span id="view-count">1356</span>
+        </div>
+
+        <!-- Embed container with controls -->
+        <div class="embed-container">
+            <h2>Welcome to the RAPIDFIRE Platform</h2>
+            <p>Experience the latest updates and features.</p>
+
+            <!-- Video control buttons -->
+            <div class="video-controls">
+                <button id="play-pause-btn">
+                    <i class="fas fa-play"></i><i class="fas fa-pause" style="display:none;"></i>
+                </button>
+                <button id="mute-btn">
+                    <i class="fas fa-volume-off"></i><i class="fas fa-volume-high" style="display:none;"></i>
+                </button>
+                <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="100">
+            </div>
         </div>
 
         <!-- Action buttons -->
@@ -86,16 +284,13 @@
                 <i class="fab fa-discord"></i> Discord
             </a>
         </div>
-
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="btn">Switch Theme</button>
     </div>
 
     <script>
         // Initialize view count from localStorage or start at 1356
         let views = localStorage.getItem('views') ? parseInt(localStorage.getItem('views')) : 1356;
 
-        // Update view counter function
+        // Update view count once when page is loaded
         function updateViewCount() {
             document.getElementById('view-count').textContent = views;
             views += 1; // Increment view count by 1
@@ -104,12 +299,52 @@
 
         // Initialize and update the view count on page load
         updateViewCount(); // Run once when page is loaded
-        setInterval(updateViewCount, 1000); // Update every second for live changes
 
-        // Theme toggle functionality
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-theme');
+        // Video play/pause functionality
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const video = document.getElementById('background-video');
+        const playIcon = playPauseBtn.querySelector('.fa-play');
+        const pauseIcon = playPauseBtn.querySelector('.fa-pause');
+
+        playPauseBtn.addEventListener('click', function () {
+            if (video.paused) {
+                video.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline-block';
+            } else {
+                video.pause();
+                playIcon.style.display = 'inline-block';
+                pauseIcon.style.display = 'none';
+            }
+        });
+
+        // Mute/unmute functionality
+        const muteBtn = document.getElementById('mute-btn');
+        const volumeOffIcon = muteBtn.querySelector('.fa-volume-off');
+        const volumeHighIcon = muteBtn.querySelector('.fa-volume-high');
+
+        muteBtn.addEventListener('click', function () {
+            if (video.muted) {
+                video.muted = false;
+                volumeOffIcon.style.display = 'none';
+                volumeHighIcon.style.display = 'inline-block';
+            } else {
+                video.muted = true;
+                volumeOffIcon.style.display = 'inline-block';
+                volumeHighIcon.style.display = 'none';
+            }
+        });
+
+        // Volume control functionality
+        const volumeSlider = document.getElementById('volume-slider');
+        volumeSlider.addEventListener('input', function () {
+            video.volume = volumeSlider.value / 100;
+        });
+
+        // Unmute and set volume to 100% when the page loads
+        window.addEventListener('load', () => {
+            video.muted = false;
+            video.volume = 1; // Set volume to 100% by default
         });
     </script>
 </body>
