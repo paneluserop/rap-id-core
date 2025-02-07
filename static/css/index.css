@@ -238,6 +238,17 @@ div.loading-page{
     color: black;
     background-color: white;
 }
+.view-count-container {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #fff; /* or any color you'd prefer */
+}
+
+#view-counter {
+    color: #ffcc00; /* Highlight the number in a different color */
+}
 
 @-webkit-keyframes spin {
 0% { -webkit-transform: rotate(0deg); }
