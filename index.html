@@ -20,7 +20,7 @@
         <div class="container" type="background">
             <div class="container" type="dev-info">
                 <div class="container" type="profile-img">
-                    <img src="static/icons/bıçak.gif" class="avatar" alt="Profile Image">
+                    <img src="static/icons/bıçak.gif" class="avatar">
                 </div>
                 <div class="container" type="info">
                     <h1 class="name">PANEL USER OP</h1>
@@ -51,54 +51,23 @@
             </div>
             <div class="container" type="badges">
                 <a class="btn-badge" href="https://discord.com/users/1119979840423079957" target="_blank">
-                    <img src="static/icons/cracked.ico" alt="Cracked">
+                    <img src="static/icons/cracked.ico" alt="">
                     <div>Cracked</div>
                 </a>
                 <a class="btn-badge" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
-                    <img src="static/icons/images.ico" alt="Github">
+                    <img src="static/icons/images.ico" alt="">
                     <div>Github</div>
                 </a>
+                <!-- Telegram linki kaldırıldı -->
                 <a class="btn-badge" href="https://discord.com/invite/rapidfirecorp" target="_blank">
-                    <img src="static/icons/discord.ico" alt="Discord">
+                    <img src="static/icons/discord.ico" alt="">
                     <div>Discord</div>
                 </a>
-            </div>
-            <div class="view-count-container">
-                <p>View count: <span id="view-count">2305</span></p>
             </div>
         </div>
     </div>
     <div class="background opacity-0">
         <video id="background-video" src="static/bg.mp4" loop></video>
     </div>
-
-    <script>
-        // Set the initial view count
-        const INITIAL_VIEW_COUNT = 2305;
-        const viewCountKey = 'viewCount';
-
-        // Check if the view count is already stored in localStorage
-        let viewCount = localStorage.getItem(viewCountKey);
-        if (viewCount === null) {
-            // If no count is stored, set it to the initial value
-            viewCount = INITIAL_VIEW_COUNT;
-        } else {
-            // If it's already stored, increment it
-            viewCount = parseInt(viewCount) + 1;
-        }
-
-        // Save the new view count back to localStorage
-        localStorage.setItem(viewCountKey, viewCount);
-
-        // Update the view count on the page
-        document.getElementById('view-count').textContent = viewCount;
-
-        // Optional: You can hide the loading page after a few seconds for better user experience
-        setTimeout(() => {
-            document.querySelector('.loading-page').style.display = 'none';
-            document.querySelector('.info').classList.remove('opacity-0');
-            document.querySelector('.background').classList.remove('opacity-0');
-        }, 2000);
-    </script>
 </body>
 </html>
