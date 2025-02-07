@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,313 +10,64 @@
     <script src="static/js/index.js"></script>
     <link rel="icon" type="image/x-icon" href="static/icons/favicon.gif">
     <title>RAPIDFIRE</title>
-    <style>
-        /* General body styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(45deg, #1c1c1c, #3a3a3a);
-            color: #fff;
-            overflow-x: hidden;
-            text-align: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Full-screen background video */
-        #background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(10px) brightness(0.6);
-            z-index: -1;
-        }
-
-        /* Main content container */
-        .content {
-            max-width: 1000px;
-            padding: 60px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
-            z-index: 1;
-            width: 80%;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        /* Heading for Owner */
-        .owner-title {
-            font-size: 40px;
-            font-weight: bold;
-            color: #00d9ff;
-            text-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
-            margin-bottom: 20px;
-        }
-
-        /* Developer info section */
-        .developer-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .developer-info .name {
-            font-size: 36px;
-            font-weight: 700;
-            color: #00d9ff;
-            margin-bottom: 10px;
-            text-shadow: 0 4px 10px rgba(0, 255, 255, 0.4);
-        }
-
-        .developer-info .badge {
-            background-color: #00d9ff;
-            color: #fff;
-            padding: 8px 16px;
-            font-size: 18px;
-            border-radius: 20px;
-            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.3);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-
-        .developer-info .badge:hover {
-            transform: scale(1.1);
-        }
-
-        /* Frosted glass effect container */
-        .embed-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 40px;
-            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .embed-container h2 {
-            color: #fff;
-            font-size: 28px;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 10px rgba(0, 255, 255, 0.5);
-        }
-
-        .embed-container p {
-            color: #fff;
-            font-size: 18px;
-            text-shadow: 0 4px 10px rgba(0, 255, 255, 0.4);
-        }
-
-        /* Action buttons styling */
-        .btn {
-            display: inline-block;
-            background-color: #00d9ff;
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-weight: 700;
-            text-decoration: none;
-            margin: 20px 15px;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
-        }
-
-        .btn:hover {
-            background-color: #008bb0;
-            transform: scale(1.1);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
-        }
-
-        .btn i {
-            margin-right: 10px;
-        }
-
-        /* View counter styling */
-        .view-counter {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 30px;
-            color: #00d9ff;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        /* Keyframe for fade-in animation */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive layout for mobile */
-        @media (max-width: 768px) {
-            .content {
-                padding: 40px;
-                width: 90%;
-            }
-
-            .owner-title {
-                font-size: 32px;
-            }
-
-            .developer-info .name {
-                font-size: 28px;
-            }
-
-            .embed-container h2 {
-                font-size: 24px;
-            }
-
-            .embed-container p {
-                font-size: 16px;
-            }
-
-            .btn {
-                padding: 12px 24px;
-            }
-        }
-    </style>
 </head>
-
 <body>
-    <!-- Full-screen background video -->
-    <video id="background-video" src="static/bg.mp4" loop autoplay></video>
-
-    <!-- Main content -->
-    <div class="content">
-        <!-- Heading for Owner -->
-        <h1 class="owner-title">Owner of RAPIDFIRE CORPORATION</h1>
-
-        <!-- Developer info section with badge -->
-        <div class="developer-info">
-            <div>
-                <h2 class="name">PANEL USER OP</h2>
-                <span class="badge">Developer</span>
+    <div class="loading-page">
+        <div class="loader"></div>
+        <button class="btn opacity-0" id="enter">Enter</button>
+    </div>
+    <div class="info opacity-0">
+        <div class="container" type="background">
+            <div class="container" type="dev-info">
+                <div class="container" type="profile-img">
+                    <img src="static/icons/bıçak.gif" class="avatar">
+                </div>
+                <div class="container" type="info">
+                    <h1 class="name">PANEL USER OP</h1>
+                    <h3 class="info">OWNER OF RAPIDFIRE CORPORATION</h3>
+                </div>
             </div>
-        </div>
-
-        <!-- View counter -->
-        <div class="view-counter">
-            Views: <span id="view-count">1356</span>
-        </div>
-
-        <!-- Embed container with controls -->
-        <div class="embed-container">
-            <h2>Fully Antiban Panels | Bypass</h2>
-            <p>Experience the latest updates and features.</p>
-
-            <!-- Video control buttons -->
-            <div class="video-controls">
-                <button id="play-pause-btn">
-                    <i class="fas fa-play"></i><i class="fas fa-pause" style="display:none;"></i>
-                </button>
-                <button id="mute-btn">
-                    <i class="fas fa-volume-off"></i><i class="fas fa-volume-high" style="display:none;"></i>
-                </button>
-                <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="100">
+            <hr>
+            <div class="container" type="video-player">
+                <div class="video-title-main">
+                    <a>Fully Antiban Panels | Bypass: </a>
+                    <div class="video-title">
+                        <div class="video-name">
+                            <a>Experience the latest updates and features.</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="volume-control">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                        <i class="fas fa-pause"></i>
+                    </div>
+                    <div class="volume-icon">
+                        <i class="fas fa-volume-off"></i>
+                        <i class="fas fa-volume-high"></i>
+                    </div>
+                    <input type="range" min="0" max="100" value="10" class="slider" id="volume">
+                </div>
             </div>
-        </div>
-
-        <!-- Action buttons -->
-        <div>
-            <a class="btn" href="https://discord.com/users/1119979840423079957" target="_blank">
-                <i class="fas fa-comment-dots"></i> DM ME
-            </a>
-            <a class="btn" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
-                <i class="fab fa-youtube"></i> YouTube
-            </a>
-            <a class="btn" href="https://discord.com/invite/rapidfirecorp" target="_blank">
-                <i class="fab fa-discord"></i> Discord
-            </a>
+            <div class="container" type="badges">
+                <a class="btn-badge" href="https://discord.com/users/1119979840423079957" target="_blank">
+                    <img src="static/icons/cracked.ico" alt="">
+                    <div>Cracked</div>
+                </a>
+                <a class="btn-badge" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
+                    <img src="static/icons/images.ico" alt="">
+                    <div>Github</div>
+                </a>
+                <!-- Telegram linki kaldırıldı -->
+                <a class="btn-badge" href="https://discord.com/invite/rapidfirecorp" target="_blank">
+                    <img src="static/icons/discord.ico" alt="">
+                    <div>Discord</div>
+                </a>
+            </div>
         </div>
     </div>
-
-    <script>
-        // Initialize view count from localStorage or start at 1356
-        let views = localStorage.getItem('views') ? parseInt(localStorage.getItem('views')) : 1356;
-
-        // Update view count once when page is loaded
-        function updateViewCount() {
-            document.getElementById('view-count').textContent = views;
-            views += 1; // Increment view count by 1
-            localStorage.setItem('views', views); // Save to localStorage
-        }
-
-        // Initialize and update the view count on page load
-        updateViewCount(); // Run once when page is loaded
-
-        // Video play/pause functionality
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const video = document.getElementById('background-video');
-        const playIcon = playPauseBtn.querySelector('.fa-play');
-        const pauseIcon = playPauseBtn.querySelector('.fa-pause');
-
-        playPauseBtn.addEventListener('click', function () {
-            if (video.paused) {
-                video.play();
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'inline-block';
-            } else {
-                video.pause();
-                playIcon.style.display = 'inline-block';
-                pauseIcon.style.display = 'none';
-            }
-        });
-
-        // Mute/unmute functionality
-        const muteBtn = document.getElementById('mute-btn');
-        const volumeOffIcon = muteBtn.querySelector('.fa-volume-off');
-        const volumeHighIcon = muteBtn.querySelector('.fa-volume-high');
-
-        muteBtn.addEventListener('click', function () {
-            if (video.muted) {
-                video.muted = false;
-                volumeOffIcon.style.display = 'none';
-                volumeHighIcon.style.display = 'inline-block';
-            } else {
-                video.muted = true;
-                volumeOffIcon.style.display = 'inline-block';
-                volumeHighIcon.style.display = 'none';
-            }
-        });
-
-        // Volume control functionality
-        const volumeSlider = document.getElementById('volume-slider');
-        volumeSlider.addEventListener('input', function () {
-            video.volume = volumeSlider.value / 100;
-        });
-
-        // Unmute and set volume to 100% when the page loads
-        window.addEventListener('load', () => {
-            video.muted = false;
-            video.volume = 1; // Set volume to 100% by default
-        });
-    </script>
+    <div class="background opacity-0">
+        <video id="background-video" src="static/bg.mp4" loop></video>
+    </div>
 </body>
-
 </html>
