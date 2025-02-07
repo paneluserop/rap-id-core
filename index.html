@@ -12,13 +12,10 @@
     <title>RAPIDFIRE</title>
 </head>
 <body>
-    <!-- Fullscreen loading page with the loader -->
     <div class="loading-page">
         <div class="loader"></div>
         <button class="btn opacity-0" id="enter">Enter</button>
     </div>
-
-    <!-- Main content (Profile info, video controls, etc.) -->
     <div class="info opacity-0">
         <div class="container" type="background">
             <div class="container" type="dev-info">
@@ -55,11 +52,11 @@
             <div class="container" type="badges">
                 <a class="btn-badge" href="https://discord.com/users/1119979840423079957" target="_blank">
                     <img src="static/icons/cracked.ico" alt="Cracked">
-                    <div>Cracked</div>
+                    <div>DM Me</div>
                 </a>
                 <a class="btn-badge" href="https://www.youtube.com/@rapidfire_corp" target="_blank">
                     <img src="static/icons/images.ico" alt="Github">
-                    <div>Github</div>
+                    <div>Youtube</div>
                 </a>
                 <a class="btn-badge" href="https://discord.com/invite/rapidfirecorp" target="_blank">
                     <img src="static/icons/discord.ico" alt="Discord">
@@ -72,13 +69,8 @@
             </div>
         </div>
     </div>
-
-    <!-- Background Video -->
     <div class="background opacity-0">
-        <video id="background-video" autoplay loop muted>
-            <source src="static/bg.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <video id="background-video" src="static/bg.mp4" loop></video>
     </div>
 
     <script>
