@@ -1,341 +1,109 @@
-/* Global Body */
+/* Basic Reset for Padding/Margin */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background and container styling */
 body {
-    padding: 0;
-    margin: 0;
-    background-color: #121212; /* Darker background for a futuristic look */
-    color: white;
-    font-family: 'Poppins', sans-serif; /* Default font for the body */
+    font-family: 'Arial', sans-serif;
+    background-color: #101010;
+    color: #f1f1f1;
+    overflow-x: hidden;
 }
 
-/* Background Settings */
-div.background {
-    z-index: 1;
-    overflow: hidden;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    transition: opacity 1s ease;
-}
-
-/* Font Faces */
-@font-face {
-    font-family: 'Montserrat';
-    src: url('/static/fonts/Montserrat-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('/static/fonts/Poppins-Regular.ttf');
-}
-
-/* Info Section */
-div.info {
-    z-index: 2;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-h1.name {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: #ffffff;
-    padding: 0;
-    margin: 0;
-    text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 30px #00ff99;
-}
-
-h3.info {
-    color: rgb(189, 189, 189);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    padding: 0;
-    margin: 0;
-}
-
-img.avatar {
-    width: 5rem;
+/* Profile image frame */
+.avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 255, 153, 0.7);
-    border: 2px solid #00ff99;
+    border: 5px solid #fff;  /* White border around the profile image */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);  /* Shadow to make the image pop */
 }
 
-/* Button Badge */
-a.btn-badge {
-    background-color: rgba(66, 66, 66, 0.7);
-    padding: 10px;
-    border-radius: 100%;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-a.btn-badge img {
-    width: 25px;
-}
-
-a.btn-badge div {
-    margin: 0 auto;
-    width: 55px;
-    text-align: center;
-    transform: translateX(-30%) translateY(20%);
-    padding: 3px 4px;
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    text-transform: uppercase;
-}
-
-a.btn-badge:hover {
-    background-color: rgba(66, 66, 66, 0.9);
-    transform: scale(1.2);
-}
-
-/* Badge Container */
-div.container[type=badges] {
-    margin: .5rem 0;
-    flex-wrap: wrap;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-}
-
-/* Container Settings */
-div.container[type=background] {
-    background-color: rgba(37, 37, 37, 0.95);
-    padding: 1rem 1rem 2rem;
-    min-width: 20%;
-    max-width: 80%;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
-}
-
-/* Video Title */
-div.video-title-main {
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    flex-direction: row;
-    gap: 0.3rem;
-    color: #00ff99;
-}
-
-div.video-title {
-    height: 20px;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    white-space: nowrap;
-}
-
-div.video-name a {
-    position: absolute;
-    animation: scroll-left 15s linear infinite;
-}
-
-@keyframes scroll-left {
-    0% {
-        transform: translateX(50%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-/* Developer Info */
-div.container[type=dev-info] {
-    width: fit-content;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* Profile Image */
-div.container[type=profile-img] {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Video Player */
-div.container[type=video-player] {
-    background-color: rgb(66, 66, 66);
-    padding: 0.5rem 0.7rem 0.1rem;
-    border-radius: 10px;
-    color: #ffffff;
-}
-
-div.volume-control {
-    display: flex;
-    gap: 0.3rem;
-    margin: 1rem 0;
-}
-
-div.volume-icon {
-    width: 20px;
-}
-
-div.play-icon {
-    cursor: pointer;
-    width: 10px;
-    padding: 0 5px 0 0;
-}
-
-/* Slider */
-.slider {
-    -webkit-appearance: none;
-    height: 10px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
+/* Framed effect */
+.framed {
     border-radius: 15px;
-    -webkit-transition: 0.2s;
-    transition: opacity 0.2s;
+    border: 6px solid #ff6600; /* Orange border for the frame */
+    padding: 10px; /* Adds spacing between the border and image */
+    background: rgba(0, 0, 0, 0.4); /* Slight dark background for the frame */
 }
 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 100%;
-    background: #7c7c7c;
-    cursor: pointer;
+/* Styling for profile info */
+.container[type="info"] {
+    margin-left: 20px;
 }
 
-.slider::-webkit-slider-thumb:hover {
-    transition: 0.2s ease;
-    background: #6d6d6d;
-}
-
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-}
-
-/* Hidden Elements */
-.opacity-0 {
-    opacity: 0;
-}
-
-.opacity-100 {
-    opacity: 100;
-}
-
-/* Video Settings */
-video {
-    filter: blur(5px);
-    transform: translateX(-50%) translateY(-50%);
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    position: absolute;
-}
-
-/* Loading Page */
-div.loading-page {
-    z-index: 3;
-    background-color: black;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 1rem;
-}
-
-.loader {
-    border: 8px solid #4e4e4e;
-    border-radius: 50%;
-    border-top: 8px solid #ffffff;
-    width: 25px;
-    height: 25px;
-    animation: spin 2s linear infinite;
-}
-
-/* Button Styles */
-.btn {
-    padding: 0.3rem 0.7rem;
-    background-color: inherit;
-    color: white;
-    font-size: larger;
-    border: 1px solid #00ff99;
-    border-style: double;
-    transition: 500ms ease;
-    cursor: pointer;
-}
-
-.btn:hover {
-    color: black;
-    background-color: white;
-    border-color: #00ff99;
-}
-
-/* View Counter */
-.view-count-container {
-    text-align: center;
-    font-size: 18px;
+/* Name and Info Styling */
+.name {
+    font-size: 28px;
     font-weight: bold;
+    color: #ff6600; /* Highlight the name in orange */
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.info {
+    font-size: 18px;
+    color: #888; /* Soft grey for subtitle */
+    font-style: italic;
+}
+
+/* Video Title Section */
+.video-title-main {
     margin-top: 20px;
+}
+
+.video-title {
+    font-size: 16px;
+    color: #ff6600;
+    margin-top: 5px;
+}
+
+/* Volume and Play Controls */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: #fff;
 }
 
-#view-counter {
-    color: #ffcc00; /* Highlight the number in a different color */
+.play-icon i, .volume-icon i {
+    font-size: 18px;
 }
 
-/* Keyframe Spin Animation */
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+.slider {
+    margin-left: 10px;
+    width: 150px;
 }
 
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+/* View Counter Styling */
+.view-count-container {
+    font-size: 16px;
+    color: #aaa;
+    margin-top: 20px;
+    text-align: center;
 }
 
-/* Media Queries */
-@media screen and (max-width: 800px) {
-    h3.info {
-        font-size: medium;
+.view-count-container span {
+    font-weight: bold;
+    color: #ff6600;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .avatar {
+        width: 120px;
+        height: 120px;
     }
 
-    div.video-title {
-        width: 55%;
+    .name {
+        font-size: 24px;
     }
 
-    div.video-name a {
-        position: absolute;
-        animation: scroll-left 15s linear infinite;
+    .info {
+        font-size: 16px;
     }
 }
